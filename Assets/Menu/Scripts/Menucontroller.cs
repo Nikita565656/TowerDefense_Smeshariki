@@ -14,6 +14,11 @@ public class Menucontroller : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
+    public void LoadSceneSettings()
+        {
+            SceneManager.LoadScene("Settings");
+        }
+    
     public void LoadSceneLevels()
     {
         SceneManager.LoadScene("Levels");
