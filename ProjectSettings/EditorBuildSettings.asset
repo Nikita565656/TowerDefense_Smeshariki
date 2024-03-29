@@ -17,10 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Resurse/Plugins/Magic Menu Free/Example/Scenes/Main_menu.unity
     guid: a16a4be73be161647874fbd4ab49beea
-  - enabled: 1
+  - enabled: 0
     path: Assets/Resurse/Plugins/Magic Menu Free/Example/Scenes/scene_gamePlay.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}
