@@ -1580,8 +1580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1313901624}
-  soundEffectsAudio:
-  - {fileID: 0}
+  soundEffectsAudio: []
 --- !u!4 &1909943308
 Transform:
   m_ObjectHideFlags: 0
