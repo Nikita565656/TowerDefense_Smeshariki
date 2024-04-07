@@ -6,12 +6,8 @@ TerrainLayer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NewLayer 2
-<<<<<<< Updated upstream
+  m_Name: NewLayer
   m_DiffuseTexture: {fileID: 2800000, guid: d6fe049ff3070c64cb4a4b19f1d8d9b3, type: 3}
-=======
-  m_DiffuseTexture: {fileID: 2800000, guid: 3c331ce2a7c9992498d590b2a5ae1e5e, type: 3}
->>>>>>> Stashed changes
   m_NormalMapTexture: {fileID: 0}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 2, y: 2}

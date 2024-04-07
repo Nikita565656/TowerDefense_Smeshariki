@@ -1,36 +1,39 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform[] waypoints; // Массив точек маршрута
-    public float speed = 2.0f; // Скорость движения
-    private int waypointIndex = 0; // Индекс текущей точки маршрута
+    public Transform[] points;
+    private int destPoint = 0;
+    private NavMeshAgent agent;
 
     void Start()
     {
-        transform.position = waypoints[waypointIndex].transform.position; // Начальная позиция
+        agent = GetComponent<NavMeshAgent>();
+
+        // Отключение автоматического обновления пути и скорости движения
+        agent.autoBraking = false;
+
+        GotoNextPoint();
+    }
+
+    void GotoNextPoint()
+    {
+        // Выбирает следующую точку из массива как цель и продолжает движение
+        if (points.Length == 0)
+            return;
+
+        agent.destination = points[destPoint].position;
+
+        // Выбирает следующую точку
+        destPoint = (destPoint + 1) % points.Length;
     }
 
     void Update()
     {
-        Move();
-    }
-
-    private void Move()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, speed * Time.deltaTime);
-
-        // Проверка достижения текущей точки маршрута
-        if (transform.position == waypoints[waypointIndex].transform.position)
-        {
-            waypointIndex += 1; // Переход к следующей точке маршрута
-        }
-
-        // Если достигнута последняя точка маршрута, возвращаемся к первой
-        if (waypointIndex == waypoints.Length)
-        {
-            waypointIndex = 0;
-        }
+        // Если близко к цели, переходит к следующей
+        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+            GotoNextPoint();
     }
 }
