@@ -11,12 +11,17 @@ public class EnemyController1 : MonoBehaviour
     private NavMeshAgent agent;
     private int currentIndex = 0;
     public EnemyData enemyData;
-    public float currentSpeed;
+    private float currentSpeed;
+    private float currentHp;
+    private float currentDamage;
 
     void Start()
     {
         currentSpeed = enemyData.EnemySpeed;
+        currentHp = enemyData.EnemyHp;
+        currentDamage = enemyData.Enemydamage;
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = currentSpeed;
         agent.SetDestination(targetsPoints[currentIndex].position);
     }
 

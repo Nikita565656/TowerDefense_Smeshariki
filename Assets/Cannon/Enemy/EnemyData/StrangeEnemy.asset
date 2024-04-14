@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: StrangeEnemy
   health: 10
-  Speed: 3
+  Speed: 4
   Damage: 8
