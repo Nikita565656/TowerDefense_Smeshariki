@@ -7,7 +7,7 @@ public class Turret : MonoBehaviour
     public float fireRate = 1.0f;
     private float nextFireTime;
     private GameObject targetEnemy;
-    private float trackingTime = 5.0f;
+    public float trackingTime = 3.0f;
     private float trackingTimer;
 
     void Update()
@@ -61,3 +61,4 @@ public class Turret : MonoBehaviour
         }
     }
 }
+

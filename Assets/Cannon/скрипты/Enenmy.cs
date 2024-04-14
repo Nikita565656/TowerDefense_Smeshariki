@@ -5,12 +5,6 @@ public class Enemy : MonoBehaviour
 {
     public int health = 100;
     public int damagePoints = 100;
-    private ScoreManager scoreManager;
-
-    void Start()
-    {
-        scoreManager = GameObject.FindObjectOfType<ScoreManager>();
-    }
 
     public void TakeDamage(int damage)
     {
@@ -18,7 +12,7 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            scoreManager.AddScore(damagePoints);
+            ScoreManager.instance.AddScore(damagePoints);
             Destroy(gameObject);
         }
     }
