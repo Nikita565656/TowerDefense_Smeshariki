@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class GunSelection : MonoBehaviour
 {
     public Button[] buttons; // Массив кнопок для выбора пушки
     public GameObject[] guns; // Массив пушек
+    public int[] gunPrices; // Массив цен пушек
     public GameObject emptyObject; // Пустой объект, который можно настроить через инспектор
     private GameObject selectedGun; // Выбранная пушка
+    private int selectedGunPrice; // Цена выбранной пушки
     private GameObject currentGun; // Текущая пушка на сцене
     public ScoreManager scoreManager; // Менеджер очков
 
@@ -37,10 +38,10 @@ public class GunSelection : MonoBehaviour
                 if (hit.collider.gameObject == emptyObject)
                 {
                     // Если да, и у нас достаточно очков, и нет текущей пушки на сцене, устанавливаем пушку на место пустого объекта
-                    if (scoreManager.CanAfford(1) && currentGun == null)
+                    if (scoreManager.CanAfford(selectedGunPrice) && currentGun == null)
                     {
                         currentGun = Instantiate(selectedGun, emptyObject.transform.position, Quaternion.identity);
-                        scoreManager.SpendScore(1); // Вычитаем стоимость пушки из очков
+                        scoreManager.SpendScore(selectedGunPrice); // Вычитаем стоимость пушки из очков
                     }
                 }
             }
@@ -51,5 +52,6 @@ public class GunSelection : MonoBehaviour
     void SelectGun(int index)
     {
         selectedGun = guns[index];
+        selectedGunPrice = gunPrices[index]; // Запоминаем цену выбранной пушки
     }
 }

@@ -193,7 +193,7 @@ Transform:
   m_GameObject: {fileID: 4181738818274267952}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9941421, z: -0, w: 0.10808109}
-  m_LocalPosition: {x: 6.709361, y: 67.02069, z: 94.7216}
+  m_LocalPosition: {x: 5.0911455, y: -0.005895525, z: 67.83807}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -221,8 +221,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 18.3984, y: 17.45702, z: 22.211447}
-  m_Center: {x: -3.5543077, y: 0.24441338, z: 10.605668}
+  m_Size: {x: 36.678078, y: 17.45702, z: 60.99125}
+  m_Center: {x: -2.9379787, y: 0.24441338, z: -0.38839528}
 --- !u!114 &5290041202591996100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,13 +232,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4181738818274267952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2936d6f01cde367468b7145883dd3b28, type: 3}
+  m_Script: {fileID: 11500000, guid: b50e6db11533dd040a2b934a0e089412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 10
-  projectilePrefab: {fileID: 291849759506186090, guid: d7a2696516b76b14f82f271889e84b8a, type: 3}
-  projectileSpawnPoint: {fileID: 5353859697267228188}
-  trackingTime: 5
+  bulletPrefab: {fileID: 8861013728696957674, guid: d7a2696516b76b14f82f271889e84b8a, type: 3}
+  bulletSpawnPoint: {fileID: 5353859697267228188}
+  fireRate: 1
+  trackingTime: 3
 --- !u!1 &4326372019387032316
 GameObject:
   m_ObjectHideFlags: 0

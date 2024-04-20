@@ -5,10 +5,11 @@ public class SpawnGun : MonoBehaviour
 {
     public Button[] buttons; // Массив кнопок для выбора пушки
     public GameObject[] gunPrefabs; // Массив префабов пушек
+    public int[] gunPrices; // Массив цен пушек
     public GameObject[] spawnPoints; // Массив точек спавна
     private GameObject selectedGun; // Выбранная пушка
+    private int selectedGunPrice; // Цена выбранной пушки
     private bool[] hasSpawned; // Массив для отслеживания, была ли на каждой точке спавна создана пушка
-    public int cost = 300;
 
     void Start()
     {
@@ -38,11 +39,11 @@ public class SpawnGun : MonoBehaviour
                 // Если столкнулся, проверяем, является ли объект точкой спавна
                 for (int i = 0; i < spawnPoints.Length; i++)
                 {
-                    if (hit.collider.gameObject == spawnPoints[i] && !hasSpawned[i] && ScoreManager.instance.CanAfford(cost))
+                    if (hit.collider.gameObject == spawnPoints[i] && !hasSpawned[i] && ScoreManager.instance.CanAfford(selectedGunPrice))
                     {
                         // Если да, и на этой точке спавна еще нет пушки, и у нас достаточно очков, устанавливаем пушку на эту точку спавна
                         Instantiate(selectedGun, spawnPoints[i].transform.position, Quaternion.identity);
-                        ScoreManager.instance.SpendScore(cost); // Вычитаем стоимость пушки из очков
+                        ScoreManager.instance.SpendScore(selectedGunPrice); // Вычитаем стоимость пушки из очков
                         hasSpawned[i] = true; // Отмечаем, что на этой точке спавна теперь есть пушка
                         break; // Выходим из цикла, так как мы уже обработали этот клик
                     }
@@ -57,6 +58,7 @@ public class SpawnGun : MonoBehaviour
         if (index >= 0 && index < gunPrefabs.Length)
         {
             selectedGun = gunPrefabs[index];
+            selectedGunPrice = gunPrices[index]; // Запоминаем цену выбранной пушки
         }
     }
 }

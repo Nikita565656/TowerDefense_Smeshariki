@@ -12,24 +12,26 @@ public class Turret : MonoBehaviour
 
     void Update()
     {
-        if (targetEnemy != null && trackingTimer > 0)
+        if (targetEnemy != null)
         {
-            // Поворачиваем пушку к врагу
-            transform.LookAt(targetEnemy.transform);
-
-            if (Time.time >= nextFireTime)
+            // Проверяем, жив ли враг
+            Enemy enemyScript = targetEnemy.GetComponent<Enemy>();
+            if (enemyScript != null && enemyScript.isAlive)
             {
-                Fire();
-                nextFireTime = Time.time + fireRate;
-            }
+                // Поворачиваем пушку к врагу
+                transform.LookAt(targetEnemy.transform);
 
-            // Уменьшаем таймер слежения
-            trackingTimer -= Time.deltaTime;
-        }
-        else
-        {
-            // Если таймер слежения истек или цель уничтожена, сбрасываем цель
-            targetEnemy = null;
+                if (Time.time >= nextFireTime)
+                {
+                    Fire();
+                    nextFireTime = Time.time + fireRate;
+                }
+            }
+            else
+            {
+                // Если враг уничтожен, сбрасываем цель
+                targetEnemy = null;
+            }
         }
     }
 
@@ -42,23 +44,11 @@ public class Turret : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // Если враг входит в коллайдер пушки
-        if (other.gameObject.CompareTag("Enemy"))
+        // Если враг входит в коллайдер пушки и у пушки еще нет цели
+        if (other.gameObject.CompareTag("Enemy") && targetEnemy == null)
         {
-            // Задаем врага в качестве цели и устанавливаем таймер слежения
+            // Задаем врага в качестве цели
             targetEnemy = other.gameObject;
-            trackingTimer = trackingTime;
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        // Если враг выходит из коллайдера пушки
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            // Сбрасываем цель
-            targetEnemy = null;
         }
     }
 }
-
