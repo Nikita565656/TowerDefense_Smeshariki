@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pumpkin Variant Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6108316503668109650, guid: effaf57187e18b94eaa7cc0e364f6b30, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6108316503668206770, guid: effaf57187e18b94eaa7cc0e364f6b30, type: 3}
       propertyPath: m_LocalPosition.x
       value: 87.55907
@@ -83,4 +87,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetsPoints: {fileID: 0}
-  enemyData: {fileID: 11400000, guid: fe2e48b65238c604ba28f65883bb4473, type: 2}
+  enemyData: {fileID: 11400000, guid: ee4675b0b465b764088c59ba88f52c0b, type: 2}

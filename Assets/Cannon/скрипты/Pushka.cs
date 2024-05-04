@@ -14,11 +14,11 @@ public class Turret : MonoBehaviour
     {
         if (targetEnemy != null)
         {
-            // Проверяем, жив ли враг
+            
             Enemy enemyScript = targetEnemy.GetComponent<Enemy>();
             if (enemyScript != null && enemyScript.isAlive)
             {
-                // Поворачиваем пушку к врагу
+                
                 transform.LookAt(targetEnemy.transform);
 
                 if (Time.time >= nextFireTime)
@@ -29,7 +29,7 @@ public class Turret : MonoBehaviour
             }
             else
             {
-                // Если враг уничтожен, сбрасываем цель
+                
                 targetEnemy = null;
             }
         }
@@ -44,10 +44,10 @@ public class Turret : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // Если враг входит в коллайдер пушки и у пушки еще нет цели
+        
         if (other.gameObject.CompareTag("Enemy") && targetEnemy == null)
         {
-            // Задаем врага в качестве цели
+            
             targetEnemy = other.gameObject;
         }
     }

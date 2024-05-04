@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.transform.position) < 0.1f)
         {
-            Enemy enemyScript = target.GetComponent<Enemy>();
+            Enemy1 enemyScript = target.GetComponent<Enemy1>();
             enemyScript.TakeDamage(damage);
             if (enemyScript.health <= 0)
             {

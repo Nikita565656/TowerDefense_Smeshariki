@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class EnemyContr : MonoBehaviour
 {
-    [SerializeField] private Transform targetsPoints;
+    [SerializeField] private GameObject targetsPoints;
     private NavMeshAgent agent;
     private int currentIndex = 0;
     public EnemyData enemyData;
@@ -22,7 +22,8 @@ public class EnemyContr : MonoBehaviour
         currentDamage = enemyData.Enemydamage;
         agent = GetComponent<NavMeshAgent>();
         agent.speed = currentSpeed;
-        agent.SetDestination(targetsPoints.position);
+        targetsPoints = GameObject.FindGameObjectWithTag("MainCastle");
+        agent.SetDestination(targetsPoints.transform.position);
     }
 
     

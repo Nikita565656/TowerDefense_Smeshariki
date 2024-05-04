@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: monster_scavenger_Skin_Gray Variant Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1219926269151414035, guid: 762a741f8efc4d64d9764f107b8de2d7, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1992241225859620265, guid: 762a741f8efc4d64d9764f107b8de2d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 86.20298
@@ -83,4 +87,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetsPoints: {fileID: 0}
-  enemyData: {fileID: 11400000, guid: e074ceaf299f88a4f970d36c43f6d8c8, type: 2}
+  enemyData: {fileID: 11400000, guid: 6eb2b6ea4fe26bd4092bbb93252436ae, type: 2}

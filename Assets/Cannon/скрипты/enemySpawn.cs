@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class Enemyspawner : MonoBehaviour
 {
     // Префаб врага, который можно настроить через инспектор Unity
     public GameObject enemyPrefab;
