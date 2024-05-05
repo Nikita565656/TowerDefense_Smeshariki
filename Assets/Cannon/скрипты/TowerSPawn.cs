@@ -5,11 +5,13 @@ public class SpawnGun : MonoBehaviour
 {
     public Button[] buttons; // Массив кнопок для выбора пушки
     public GameObject[] gunPrefabs; // Массив префабов пушек
+    public GameObject[] gunParticles; // Массив префабов партиклов пушек
     public int[] gunPrices; // Массив цен пушек
     public GameObject[] spawnPoints; // Массив точек спавна
     private GameObject selectedGun; // Выбранная пушка
     private int selectedGunPrice; // Цена выбранной пушки
     private bool[] hasSpawned; // Массив для отслеживания, была ли на каждой точке спавна создана пушка
+    private GameObject[][] gunParticlesInstances; // Массив для хранения экземпляров партиклов
 
     void Start()
     {
@@ -20,8 +22,9 @@ public class SpawnGun : MonoBehaviour
             buttons[i].onClick.AddListener(() => SelectGun(index));
         }
 
-        // Инициализируем массив hasSpawned
+        // Инициализируем массивы hasSpawned и gunParticlesInstances
         hasSpawned = new bool[spawnPoints.Length];
+        gunParticlesInstances = new GameObject[spawnPoints.Length][];
     }
 
     void Update()
@@ -45,6 +48,16 @@ public class SpawnGun : MonoBehaviour
                         Instantiate(selectedGun, spawnPoints[i].transform.position, Quaternion.identity);
                         ScoreManager.instance.SpendScore(selectedGunPrice); // Вычитаем стоимость пушки из очков
                         hasSpawned[i] = true; // Отмечаем, что на этой точке спавна теперь есть пушка
+
+                        // Удаляем текущие партиклы с этой точки спавна
+                        if (gunParticlesInstances[i] != null)
+                        {
+                            foreach (GameObject particle in gunParticlesInstances[i])
+                            {
+                                Destroy(particle);
+                            }
+                            gunParticlesInstances[i] = null;
+                        }
                         break; // Выходим из цикла, так как мы уже обработали этот клик
                     }
                 }
@@ -59,6 +72,29 @@ public class SpawnGun : MonoBehaviour
         {
             selectedGun = gunPrefabs[index];
             selectedGunPrice = gunPrices[index]; // Запоминаем цену выбранной пушки
+
+            // Удаляем текущие партиклы со всех точек спавна
+            for (int i = 0; i < spawnPoints.Length; i++)
+            {
+                if (gunParticlesInstances[i] != null)
+                {
+                    foreach (GameObject particle in gunParticlesInstances[i])
+                    {
+                        Destroy(particle);
+                    }
+                    gunParticlesInstances[i] = null;
+                }
+
+                // Создаем новые партиклы на точках спавна, где еще нет пушки
+                if (!hasSpawned[i])
+                {
+                    gunParticlesInstances[i] = new GameObject[gunParticles.Length];
+                    for (int j = 0; j < gunParticles.Length; j++)
+                    {
+                        gunParticlesInstances[i][j] = Instantiate(gunParticles[j], spawnPoints[i].transform.position, Quaternion.identity);
+                    }
+                }
+            }
         }
     }
 }
