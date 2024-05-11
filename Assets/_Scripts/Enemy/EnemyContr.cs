@@ -10,10 +10,16 @@ public class EnemyContr : MonoBehaviour
     [SerializeField] private GameObject targetsPoints;
     private NavMeshAgent agent;
     private int currentIndex = 0;
+
+
     public EnemyData enemyData;
+    public ScoreManager scoreManager;
+
     private float currentSpeed;
     private float currentHp;
     private float currentDamage;
+    private int Price;
+    private int Scoree;
 
     void Start()
     {
@@ -24,13 +30,19 @@ public class EnemyContr : MonoBehaviour
         agent.speed = currentSpeed;
         targetsPoints = GameObject.FindGameObjectWithTag("MainCastle");
         agent.SetDestination(targetsPoints.transform.position);
+        Price = enemyData.MyPrice;
+        Scoree = scoreManager.score;
     }
 
     
-    void
-        Update()
+    void Update()
     {
-        
+        if (currentHp <= 0)
+        {
+            Destroy(gameObject);
+            Price += Scoree;
+
+        }
 
     }
   
