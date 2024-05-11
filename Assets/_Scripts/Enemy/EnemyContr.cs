@@ -43,8 +43,15 @@ public class EnemyContr : MonoBehaviour
             Price += Scoree;
 
         }
+        
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("bullet"))
+        {
+            currentHp -= 5;
+        }
+    }
+
 
     }
-  
-        
-}
