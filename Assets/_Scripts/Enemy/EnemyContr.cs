@@ -37,21 +37,7 @@ public class EnemyContr : MonoBehaviour
     
     void Update()
     {
-        if (currentHp <= 0)
-        {
-            Destroy(gameObject);
-            Price += Scoree;
-
-        }
+ }
         
     }
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("bullet"))
-        {
-            currentHp -= 5;
-        }
-    }
 
-
-    }
