@@ -1,15 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Cannon/Water Float/Demo/Boat/Texture/New Material.mat.meta
 guid: d53b266e272c6a84ab8ab1b52e1cc0e4
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 2100000
-========
-guid: bf4c0c8920bc27147aa078525670e6d4
-NativeFormatImporter:
-  externalObjects: {}
   mainObjectFileID: 11400000
->>>>>>>> fe148f61f915b7c7af171da33c1de4e61216b169:Assets/DataInfo/EnemyData/FastEnemy.asset.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
