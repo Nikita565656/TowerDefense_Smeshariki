@@ -2,29 +2,20 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public GameObject target;
     public int damage = 30;
     public float speed = 10.0f;
 
-    void Update()
+    private void Start()
     {
-        if (target == null)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        Destroy(gameObject, 3f);
+    }
 
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, target.transform.position) < 0.1f)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            Enemy1 enemyScript = target.GetComponent<Enemy1>();
-            enemyScript.TakeDamage(damage);
-            if (enemyScript.health <= 0)
-            {
-                Destroy(target);
-            }
-            Destroy(gameObject);
+            enemy.TakeDamage(damage);
         }
     }
 }

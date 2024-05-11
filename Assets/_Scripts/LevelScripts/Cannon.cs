@@ -32,42 +32,6 @@ public class Cannon : MonoBehaviour
     void FireProjectile()
     {
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        projectile.GetComponent<Projectile>().Initialize(target, projectileSpeed, damage);
-    }
-}
-
-public class Projectile : MonoBehaviour
-{
-    private GameObject target;
-    private int damage;
-
-    public void Initialize(GameObject target, float speed, int damage)
-    {
-        this.target = target;
-        this.damage = damage;
-        GetComponent<Rigidbody>().velocity = (target.transform.position - transform.position).normalized * speed;
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject == target)
-        {
-            target.GetComponent<Enemy1>().TakeDamage(damage);
-            Destroy(gameObject);
-        }
-    }
-}
-
-public class Enemy1 : MonoBehaviour
-{
-    public int health = 100;
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
+       
     }
 }

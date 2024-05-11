@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Turret : MonoBehaviour
 {
@@ -6,20 +7,19 @@ public class Turret : MonoBehaviour
     public Transform bulletSpawnPoint;
     public float fireRate = 1.0f;
     private float nextFireTime;
-    private GameObject targetEnemy;
+    private GameObject _target;
     public float trackingTime = 3.0f;
-    private float trackingTimer;
 
     void Update()
     {
-        if (targetEnemy != null)
+        if (_target != null)
         {
             
-            Enemy enemyScript = targetEnemy.GetComponent<Enemy>();
+            Enemy enemyScript = _target.GetComponent<Enemy>();
             if (enemyScript != null && enemyScript.isAlive)
             {
                 
-                transform.LookAt(targetEnemy.transform);
+                transform.LookAt(_target.transform);
 
                 if (Time.time >= nextFireTime)
                 {
@@ -30,7 +30,7 @@ public class Turret : MonoBehaviour
             else
             {
                 
-                targetEnemy = null;
+                _target = null;
             }
         }
     }
@@ -38,17 +38,38 @@ public class Turret : MonoBehaviour
     void Fire()
     {
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
-        Bullet bulletScript = bullet.GetComponent<Bullet>();
-        bulletScript.target = targetEnemy;
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        bulletSpawnPoint.transform.LookAt(_target.transform.position);
+        rb.AddForce(bulletSpawnPoint.forward * 100f, ForceMode.Impulse);
+
     }
 
     void OnTriggerEnter(Collider other)
     {
         
-        if (other.gameObject.CompareTag("Enemy") && targetEnemy == null)
+        if (other.gameObject.CompareTag("Enemy") && _target == null)
         {
             
-            targetEnemy = other.gameObject;
+            _target = other.gameObject;
         }
     }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy") && _target != null)
+        {
+            _target = null;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy") && _target == null)
+        {
+            _target = other.gameObject;
+        }
+    }
+
+
 }
