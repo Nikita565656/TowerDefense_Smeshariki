@@ -3,16 +3,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class Menucontroller : MonoBehaviour 
+public class Menucontroller : MonoBehaviour
 {
-    
+
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUi;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameIsPaused) {
+            if (GameIsPaused)
+            {
                 Resum();
             }
             else
@@ -20,7 +21,7 @@ public class Menucontroller : MonoBehaviour
                 Pause();
             }
         }
-       
+
     }
     public void Resum()
     {
@@ -42,7 +43,7 @@ public class Menucontroller : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
-    
+
     public void LoadSceneLevels()
     {
         SceneManager.LoadScene("Levels");
@@ -53,7 +54,7 @@ public class Menucontroller : MonoBehaviour
     }
     public void Quit()
     {
-       Application.Quit();
+        Application.Quit();
     }
     public void RestartLevel()
     {

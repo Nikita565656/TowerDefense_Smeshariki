@@ -28,9 +28,10 @@ public class MainTower : MonoBehaviour
            
             if (health <= 0)
             {
+                LoseTable.SetActive(true);
                 Time.timeScale = 0f;
 
-                LoseTable.SetActive(true); 
+                
             }
         }
     }
