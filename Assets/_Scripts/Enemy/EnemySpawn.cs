@@ -6,13 +6,21 @@ public class EnemySpawn : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject enemyPrefab1;
     public GameObject enemyPrefab2;
+    public GameObject WinTable;
     public float spawnInterval = 3f; 
     public int maxEnemies = 10; 
     private int currentEnemies = 0;
 
     void Start()
     {
+        WinTable.SetActive(false);
         StartCoroutine(SpawnEnemy());
+    }
+    private void Update()
+    {
+        if (currentEnemies == 0 ) {
+            WinTable.SetActive(true);
+        }
     }
 
     IEnumerator SpawnEnemy()

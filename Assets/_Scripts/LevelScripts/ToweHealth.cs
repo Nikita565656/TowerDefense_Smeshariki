@@ -4,10 +4,13 @@ using UnityEngine.UI;
 public class MainTower : MonoBehaviour
 {
     public int health = 100;
-    public GameObject LoseTable; 
+    public EnemyData enemyData;
+    public GameObject LoseTable;
+    private int EnemyDammage;
 
     void Start()
     {
+        EnemyDammage = enemyData.Enemydamage;
         LoseTable.SetActive(false);
     }
 
@@ -20,7 +23,7 @@ public class MainTower : MonoBehaviour
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
 
             
-            health -= enemy.damagePoints;
+            health -= EnemyDammage;
 
             
             Destroy(other.gameObject);

@@ -51,6 +51,15 @@ EditorBuildSettings:
     path: Assets/Plugins/Magic Menu Free/Example/Scenes/scene_gamePlay.unity
     guid: 00000000000000000000000000000000
   - enabled: 1
+    path: Assets/Scenes/Levels/2 level.unity
+    guid: 12ce717ea55cb8641a60d7af37bbb44f
+  - enabled: 1
+    path: Assets/Scenes/Levels/1 level.unity
+    guid: 148e1d1b9b41ab743b0a831a8f190487
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 8051fdbe4e2938d45b517e331c72ecfd
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

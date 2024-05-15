@@ -38,6 +38,15 @@ public class Menucontroller : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+    public void LoadSceneLvl2()
+    {
+        SceneManager.LoadScene("1 level");
+    }
+
+    public void LoadSceneLvl3()
+    {
+        SceneManager.LoadScene("2 level");
+    }
     public void LoadSceneGame()
     {
         SceneManager.LoadScene("Game");
