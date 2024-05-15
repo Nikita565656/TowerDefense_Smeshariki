@@ -34,6 +34,6 @@ public class GameManager : MonoBehaviour
     public void GoToNextLevel()
     {
         // «агружаем следующий уровень 
-        SceneManager.LoadScene("2 уровень");
+        SceneManager.LoadScene("2 level");
     }
 }
