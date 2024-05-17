@@ -1,39 +1,48 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class SceneSwitcher : MonoBehaviour
 {
-    public int enemiesToKill = 10; // Количество врагов, которых нужно убить для победы
-    private int enemiesKilled = 0; // Количество убитых врагов
-    public Text winText; // Текстовый элемент для отображения сообщения о победе
-    public Button nextLevelButton; // Кнопка для перехода на следующий уровень
+    public Button yourButton; // кнопка на канвасе
+    public int enemyKillCount = 5; // количество врагов, которых нужно убить для переключения сцены
+    private int currentKillCount = 0;
 
-    void Start()
+    private void Start()
     {
-        winText.gameObject.SetActive(false); // Скрываем текст о победе в начале игры
-        nextLevelButton.gameObject.SetActive(false); // Скрываем кнопку перехода на следующий уровень в начале игры
+        yourButton.onClick.AddListener(SwitchScene);
+        Enemy.OnEnemyKilled += EnemyKilled;
+
+        // Сделайте кнопку неактивной в начале
+        yourButton.interactable = true;
     }
 
-    public void EnemyKilled()
+    private void EnemyKilled()
     {
-        enemiesKilled++; // Увеличиваем количество убитых врагов
+        currentKillCount++;
 
-        if (enemiesKilled >= enemiesToKill)
+        // Если достигнуто необходимое количество убийств, сделайте кнопку активной
+        if (currentKillCount >= enemyKillCount)
         {
-            Win(); // Если убито достаточное количество врагов, объявляем победу
+            yourButton.interactable = true;
         }
     }
 
-    void Win()
+    private void SwitchScene()
     {
-        winText.gameObject.SetActive(true); // Показываем текст о победе
-        nextLevelButton.gameObject.SetActive(true); // Показываем кнопку перехода на следующий уровень
+        // Если текущая сцена - "2 level", переключите на "3 level". В противном случае переключите на "2 level".
+        if (SceneManager.GetActiveScene().name == "2 level")
+        {
+            SceneManager.LoadScene("3 level");
+        }
+        else
+        {
+            SceneManager.LoadScene("2 level");
+        }
     }
 
-    public void GoToNextLevel()
+    private void OnDestroy()
     {
-        // Загружаем следующий уровень 
-        SceneManager.LoadScene("2 level");
+        Enemy.OnEnemyKilled -= EnemyKilled;
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-/*public class EnemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
     public Transform[] points;
     private int destPoint = 0;
@@ -36,4 +36,4 @@ using UnityEngine.AI;
         if (!agent.pathPending && agent.remainingDistance < 0.5f)
             GotoNextPoint();
     }
-}*/
+}

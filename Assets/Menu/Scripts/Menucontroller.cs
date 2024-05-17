@@ -41,12 +41,12 @@ public class Menucontroller : MonoBehaviour
     }
     public void LoadSceneLvl2()
     {
-        SceneManager.LoadScene("1 level");
+        SceneManager.LoadScene("2 level");
     }
 
     public void LoadSceneLvl3()
     {
-        SceneManager.LoadScene("2 level");
+        SceneManager.LoadScene("3 level");
     }
     public void LoadSceneGame()
     {

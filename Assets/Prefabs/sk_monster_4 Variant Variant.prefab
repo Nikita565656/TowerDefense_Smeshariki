@@ -4888,6 +4888,10 @@ PrefabInstance:
       propertyPath: enemyData
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7670562518397624581, guid: c8c0ddfdf57b35c49ada5ec1c68f414d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -4898,6 +4902,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5712832504273956420, guid: c8c0ddfdf57b35c49ada5ec1c68f414d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7746833304271464874}
+    - targetCorrespondingSourceObject: {fileID: 5712832504273956420, guid: c8c0ddfdf57b35c49ada5ec1c68f414d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 966250741107772074}
+    - targetCorrespondingSourceObject: {fileID: 5712832504273956420, guid: c8c0ddfdf57b35c49ada5ec1c68f414d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -888648089862766352}
   m_SourcePrefab: {fileID: 100100000, guid: c8c0ddfdf57b35c49ada5ec1c68f414d, type: 3}
 --- !u!4 &6033680052950984876 stripped
 Transform:
@@ -4932,3 +4942,39 @@ CapsuleCollider:
   m_Height: 2.4762404
   m_Direction: 1
   m_Center: {x: 0, y: 0.7381228, z: 0}
+--- !u!114 &966250741107772074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6408658170544173590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc05951851ad5434899b4636457ee173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 120
+  enemyData: {fileID: 0}
+  damagePoints: 100
+  isAlive: 1
+--- !u!114 &-888648089862766352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6408658170544173590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba09b616510c8d54db6a9456ff6c9da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
