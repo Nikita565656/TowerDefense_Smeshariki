@@ -13,18 +13,18 @@ public class SceneSwitcher : MonoBehaviour
         yourButton.onClick.AddListener(SwitchScene);
         Enemy.OnEnemyKilled += EnemyKilled;
 
-        // Сделайте кнопку неактивной в начале
-        yourButton.interactable = true;
+        // Сделайте кнопку невидимой в начале
+        yourButton.gameObject.SetActive(false);
     }
 
     private void EnemyKilled()
     {
         currentKillCount++;
 
-        // Если достигнуто необходимое количество убийств, сделайте кнопку активной
+        // Если достигнуто необходимое количество убийств, сделайте кнопку видимой
         if (currentKillCount >= enemyKillCount)
         {
-            yourButton.interactable = true;
+            yourButton.gameObject.SetActive(true);
         }
     }
 

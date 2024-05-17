@@ -25,6 +25,12 @@ public class SpawnGun : MonoBehaviour
         // Инициализируем массивы hasSpawned и gunParticlesInstances
         hasSpawned = new bool[spawnPoints.Length];
         gunParticlesInstances = new GameObject[spawnPoints.Length][];
+
+        // Создаем партиклы на всех точках спавна
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            CreateParticles(i);
+        }
     }
 
     void Update()
@@ -50,14 +56,7 @@ public class SpawnGun : MonoBehaviour
                         hasSpawned[i] = true; // Отмечаем, что на этой точке спавна теперь есть пушка
 
                         // Удаляем текущие партиклы с этой точки спавна
-                        if (gunParticlesInstances[i] != null)
-                        {
-                            foreach (GameObject particle in gunParticlesInstances[i])
-                            {
-                                Destroy(particle);
-                            }
-                            gunParticlesInstances[i] = null;
-                        }
+                        DestroyParticles(i);
                         break; // Выходим из цикла, так как мы уже обработали этот клик
                     }
                 }
@@ -73,28 +72,41 @@ public class SpawnGun : MonoBehaviour
             selectedGun = gunPrefabs[index];
             selectedGunPrice = gunPrices[index]; // Запоминаем цену выбранной пушки
 
-            // Удаляем текущие партиклы со всех точек спавна
+            // Создаем партиклы на всех точках спавна, где еще нет пушки
             for (int i = 0; i < spawnPoints.Length; i++)
             {
-                if (gunParticlesInstances[i] != null)
-                {
-                    foreach (GameObject particle in gunParticlesInstances[i])
-                    {
-                        Destroy(particle);
-                    }
-                    gunParticlesInstances[i] = null;
-                }
-
-                // Создаем новые партиклы на точках спавна, где еще нет пушки
                 if (!hasSpawned[i])
                 {
-                    gunParticlesInstances[i] = new GameObject[gunParticles.Length];
-                    for (int j = 0; j < gunParticles.Length; j++)
-                    {
-                        gunParticlesInstances[i][j] = Instantiate(gunParticles[j], spawnPoints[i].transform.position, Quaternion.identity);
-                    }
+                    CreateParticles(i);
                 }
             }
+        }
+    }
+
+    // Функция для создания партиклов на точке спавна
+    void CreateParticles(int spawnPointIndex)
+    {
+        // Удаляем текущие партиклы с этой точки спавна
+        DestroyParticles(spawnPointIndex);
+
+        // Создаем новые партиклы на этой точке спавна
+        gunParticlesInstances[spawnPointIndex] = new GameObject[gunParticles.Length];
+        for (int j = 0; j < gunParticles.Length; j++)
+        {
+            gunParticlesInstances[spawnPointIndex][j] = Instantiate(gunParticles[j], spawnPoints[spawnPointIndex].transform.position, Quaternion.identity);
+        }
+    }
+
+    // Функция для удаления партиклов с точки спавна
+    void DestroyParticles(int spawnPointIndex)
+    {
+        if (gunParticlesInstances[spawnPointIndex] != null)
+        {
+            foreach (GameObject particle in gunParticlesInstances[spawnPointIndex])
+            {
+                Destroy(particle);
+            }
+            gunParticlesInstances[spawnPointIndex] = null;
         }
     }
 }
