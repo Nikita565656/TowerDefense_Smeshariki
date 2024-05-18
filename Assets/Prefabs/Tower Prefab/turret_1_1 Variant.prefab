@@ -216,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8861013728696957674, guid: d7a2696516b76b14f82f271889e84b8a, type: 3}
   bulletSpawnPoint: {fileID: 5857621541202636645}
-  fireRate: 1
+  fireRate: 0.5
   trackingTime: 3
 --- !u!135 &5826519517699809203
 SphereCollider:
